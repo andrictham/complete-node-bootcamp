@@ -1,0 +1,23 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "Learning node, express, and Mongo",
+  "main": "app.js",
+  "scripts": {
+    "start": "npx nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrictham/complete-node-bootcamp.git"
+  },
+  "author": "Andric Tham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrictham/complete-node-bootcamp/issues"
+  },
+  "homepage": "https://github.com/andrictham/complete-node-bootcamp#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
