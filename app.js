@@ -23,12 +23,13 @@ const tours = JSON.parse(fs.readFileSync(toursFile))
 //
 const getAllTours = (req, res) => {
   res.status(200).json({
-    status: "success",
+    status: 'success',
+    requestedAt: req.requestTime,
     results: tours.length,
     data: {
-      tours
-    }
-  })
+      tours,
+    },
+  });
 }
 
 const getTour = (req, res) => {
