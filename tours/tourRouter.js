@@ -15,7 +15,8 @@ router.param('id', tourController.checkID);
 router
   .route('/')
   .get(tourController.getAllTours)
-  .post(tourController.createTour);
+  // checkBody will be run before createTour
+  .post(tourController.checkBody, tourController.createTour);
 
 router
   .route('/:id')
