@@ -5,6 +5,23 @@ const toursFile = `${__dirname}/../dev-data/data/tours-simple.json`;
 // Use a JSON file as a source for our data
 const tours = JSON.parse(fs.readFileSync(toursFile));
 
+exports.checkID = (req, res, next, val) => {
+  // Need to convert ID param from string to number, since our data object uses numbers as IDs
+  const id = parseInt(val);
+  const tour = tours.find((el) => el.id === id);
+  if (!tour) {
+    return res.status(404).json({
+      status: 'fail',
+      message: `Couldn’t find any tours with the ID of ${id}. There is a total of ${
+        tours.length
+      } tours available. Use an ID between 0 and ${
+        tours.length - 1
+      } to access them.`,
+    });
+  }
+  next();
+};
+
 exports.getAllTours = (req, res) => {
   res.status(200).json({
     status: 'success',
