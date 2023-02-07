@@ -11,7 +11,9 @@ const app = express();
 ////////////////////////////////
 
 // Use Morgan for logging
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 // Serve static files from the public folder
 // All files will be served on the root of the server
