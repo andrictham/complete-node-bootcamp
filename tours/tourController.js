@@ -7,7 +7,7 @@ const tours = JSON.parse(fs.readFileSync(toursFile));
 
 exports.checkID = (req, res, next, val) => {
   // Need to convert ID param from string to number, since our data object uses numbers as IDs
-  const id = parseInt(val);
+  const id = parseInt(val, 10);
   const tour = tours.find((el) => el.id === id);
   if (!tour) {
     return res.status(404).json({
@@ -23,7 +23,7 @@ exports.checkID = (req, res, next, val) => {
 };
 
 exports.checkBody = (req, res, next) => {
-  const body = req.body;
+  const { body } = req;
   if (!body.name || !body.price) {
     return res.status(400).json({
       status: 'fail',
@@ -45,6 +45,10 @@ exports.getAllTours = (req, res) => {
 };
 
 exports.getTour = (req, res) => {
+  // Need to convert ID param from string to number, since our data object uses numbers as IDs
+  const id = parseInt(req.params.id, 10);
+  const tour = tours.find((el) => el.id === id);
+
   res.status(200).json({
     status: 'success',
     data: {
@@ -76,8 +80,6 @@ exports.createTour = (req, res) => {
 };
 
 exports.updateTour = (req, res) => {
-  console.log(req.body);
-
   res.status(200).json({
     status: 'success',
     data: {
@@ -87,8 +89,6 @@ exports.updateTour = (req, res) => {
 };
 
 exports.deleteTour = (req, res) => {
-  console.log(req.body);
-
   res.status(204).json({
     status: 'success',
     data: null,
