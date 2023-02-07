@@ -9,11 +9,11 @@ const app = require('./app');
 ////////////////////////////////
 
 const port = process.env.PORT || 3000;
+const environment = app.get('env');
+
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(
-    `⚙️  App running · 🔌  Port ${port} · 🏘️  Environment: ${app.get(
-      'env'
-    )}`
+    `⚙️  App running · 🔌  Port ${port} · 🏘️  Environment: ${environment}`
   );
 });
