@@ -4,9 +4,6 @@ const tourController = require('./tourController');
 // Instantiate a new router
 const router = express.Router();
 
-// A callback trigger that runs only when a route with :id is detected
-router.param('id', tourController.checkID);
-
 ////////////////////////////////
 // ROUTES
 ////////////////////////////////
