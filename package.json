@@ -7,6 +7,8 @@
     "start": "npm run start:dev",
     "start:dev": "npx nodemon server.js",
     "start:prod": "NODE_ENV=production npx nodemon server.js",
+    "db:dev:import": "node '/Users/andric/Repos/natours/dev-data/data/import-dev-data.js' --import './dev-data/data/tours-simple.json'",
+    "db:dev:delete": "node '/Users/andric/Repos/natours/dev-data/data/import-dev-data.js' --delete",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -29,11 +29,6 @@ mongoose
     );
   });
 
-// Read and parse JSON File
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/tours-simple.json`, 'utf-8')
-);
-
 // Delete all data from collection
 const deleteData = async () => {
   try {
@@ -49,8 +44,7 @@ const deleteData = async () => {
 // Import data into database
 const importData = async (file) => {
   try {
-    const fileToImport = file || tours;
-    await Tour.create(fileToImport);
+    await Tour.create(file);
     console.log('Data successfully imported');
     exit();
   } catch (err) {
@@ -61,7 +55,7 @@ const importData = async (file) => {
 
 const main = async () => {
   console.log(`To use this script, pass in the following flags:
-  --import  or  -i: Import data from dev data JSON file (tours-simple.json).
+  --import  or  -i [filepath]: Import data from the specified JSON file. If no filepath is provided, the default file (tours-simple.json) will be used.
   --delete  or  -d: Delete all existing data from the database
   `);
   exit();
@@ -69,9 +63,12 @@ const main = async () => {
 
 // Respond to option flag passed in the command line
 const option = process.argv[2];
+const filePath = process.argv[3];
 
 if (option === '--import' || option === '-i') {
-  importData();
+  const fileToImport = filePath || `${__dirname}/tours-simple.json`;
+  const data = JSON.parse(fs.readFileSync(fileToImport, 'utf-8'));
+  importData(data);
 } else if (option === '--delete' || option === '-d') {
   deleteData();
 } else {
