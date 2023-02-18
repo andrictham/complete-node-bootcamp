@@ -24,7 +24,7 @@ mongoose
   .then((con) => {
     // eslint-disable-next-line no-console
     console.log(
-      `🗄️  Database connection successful: ${con.connection.db.databaseName}`
+      `✅ 🗄️  Database connection successful: ${con.connection.db.databaseName}`
     );
   });
 

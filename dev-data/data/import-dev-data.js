@@ -25,7 +25,7 @@ mongoose
   .then((con) => {
     // eslint-disable-next-line no-console
     console.log(
-      `🗄️  Database connection successful: ${con.connection.db.databaseName}`
+      `✅ 🗄️  Database connection successful: ${con.connection.db.databaseName}`
     );
   });
 
@@ -33,7 +33,7 @@ mongoose
 const deleteData = async () => {
   try {
     await Tour.deleteMany();
-    console.log('Existing data successfully deleted');
+    console.log('✅ 🗑️  Existing data successfully deleted');
     exit();
   } catch (error) {
     console.log(error);
@@ -45,7 +45,7 @@ const deleteData = async () => {
 const importData = async (file) => {
   try {
     await Tour.create(file);
-    console.log('Data successfully imported');
+    console.log('✅ 📥  Data successfully imported');
     exit();
   } catch (err) {
     console.log(err);
