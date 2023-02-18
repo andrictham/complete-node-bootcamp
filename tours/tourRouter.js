@@ -13,7 +13,7 @@ router
   .route('/')
   .get(tourController.getAllTours)
   // checkBody will be run before createTour
-  .post(tourController.checkBody, tourController.createTour);
+  .post(tourController.createTour);
 
 router
   .route('/:id')
