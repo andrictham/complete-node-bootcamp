@@ -38,6 +38,6 @@ const environment = app.get('env');
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(
-    `⚙️  App running · 🔌  Port ${port} · 🏘️  Environment: ${environment}`
+    `✅ ⚙️  App running · 🔌  Port ${port} · 🏘️  Environment: ${environment}`
   );
 });
